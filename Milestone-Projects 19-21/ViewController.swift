@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+protocol DataDelegate {
+    func passStringBack(string: String)
+}
+
+class ViewController: UITableViewController, DataDelegate {
 var notes = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,23 +26,30 @@ var notes = [String]()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Note", for: indexPath)
-        for (index,word) in notes[indexPath.row].enumerated() {
-            if index < 5 {
-                cell.textLabel?.text?.append(word)
-            }
+        for word in notes[indexPath.row] {
+            cell.textLabel?.text?.append(word)
         }
         return cell
     }
     
     @objc func addNote() {
+        if let vc = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
+            navigationController?.pushViewController(vc, animated: true)
+            vc.delegate = self
+        }
         
       
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
         
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
+    func passStringBack(string: String) {
+        notes.append(string)
+        
+    }
 
     
 }

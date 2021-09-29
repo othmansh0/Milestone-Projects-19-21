@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,13 +12,13 @@
         <!--View Controller-->
         <scene sceneID="Qxj-5B-qi7">
             <objects>
-                <tableViewController id="lLt-Rf-NHI" customClass="ViewController" customModule="Milestone_Projects_19_21" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Notes" id="lLt-Rf-NHI" customClass="ViewController" customModule="Milestone_Projects_19_21" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bT5-gz-sBj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Note" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="DVa-D0-hCj" rowHeight="71" style="IBUITableViewCellStyleDefault" id="uff-GG-jLw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="Note" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Note" textLabel="DVa-D0-hCj" rowHeight="71" style="IBUITableViewCellStyleDefault" id="uff-GG-jLw">
                                 <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uff-GG-jLw" id="Ggh-uX-8c7">
@@ -46,6 +47,39 @@
             </objects>
             <point key="canvasLocation" x="1205.7971014492755" y="19.419642857142858"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="RIs-ue-Bbi">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="XFg-v2-MQr" customClass="DetailViewController" customModule="Milestone_Projects_19_21" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fEE-fh-789">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bhT-pi-0Vc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2On-IL-u0a"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bhT-pi-0Vc" firstAttribute="centerY" secondItem="fEE-fh-789" secondAttribute="centerY" id="KY4-U1-cSn"/>
+                            <constraint firstItem="bhT-pi-0Vc" firstAttribute="centerX" secondItem="fEE-fh-789" secondAttribute="centerX" id="f8a-ww-drG"/>
+                            <constraint firstItem="bhT-pi-0Vc" firstAttribute="top" secondItem="fEE-fh-789" secondAttribute="topMargin" constant="-44" id="hEK-nN-rqI"/>
+                            <constraint firstItem="bhT-pi-0Vc" firstAttribute="leading" secondItem="2On-IL-u0a" secondAttribute="leading" id="vI0-us-F25"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="noteText" destination="bhT-pi-0Vc" id="WRr-0H-Tk5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="deg-2e-oIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1894.2028985507247" y="19.419642857142858"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WvI-Qf-RmC">
             <objects>
@@ -66,6 +100,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
